@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centro de estetica</title>
+  <link rel="stylesheet" href="styles.css">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+<link rel="icon" href="./img/Icoo.png" type="image/x-icon">
+
+</head>
+<body>
+
+  <style>
+    /* =====================
+   RESET
+===================== */
+html {
+  scroll-behavior: smooth;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+.navbar {
+  background: #fff;
+  border-bottom: 3px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px 16px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+/* BLOQUES */
+.nav-left,
+.nav-links,
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+/* IZQUIERDA */
+.nav-left {
+  gap: 10px;
+}
+
+/* LOGO */
+.nav-logo {
+  font-weight: bold;
+  font-size: clamp(18px, 4vw, 29px);
+  white-space: nowrap;
+}
+
+/* LINKS */
+.nav-links {
+  gap: 50px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgba(51, 51, 51, .8);
+  font-size: clamp(14px, 2.5vw, 18px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+/* =====================
+   BUSCADOR (DESKTOP)
+===================== */
+.search-container {
+  position: relative;
+}
+
+.search-container input {
+  width: 200px;
+  padding: 10px 17px 10px 49px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  pointer-events: none;
+}
+
+.search-icon svg {
+  width: 33px;
+  height: 24px;
+}
+
+/* =====================
+   HAMBURGUESA
+===================== */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* =====================
+   HERO
+===================== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  margin: 10vh 0;
+  overflow: hidden;
+}
+
+.slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  animation: fade 12s infinite;
+}
+
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 4s; }
+.slide:nth-child(3) { animation-delay: 8s; }
+
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  margin: 1rem;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+.hero-content p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+/* =====================
+   TABLET
+===================== */
+@media (max-width: 1600px) {
+  .hero .slides img {
+    width: 1150px !important;
+    height: 580px !important;
+  }
+}
+@media (max-width: 1200px) {
+   .hero .slides img  {
+   width: 100% !important;
+   height: 100% !important;
+   padding: .2rem;
+  }
+  .cards-container {
+    width: 1050px;
+  }
+}
+@media (max-width: 900px) {
+  /* 🔑 CLAVE: el input desaparece */
+  .search-container input {
+    display: none;
+  }
+  
+  .search-icon {
+    position: static;
+    transform: none;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  .hero .slides img  {
+   width: 100% !important;
+   height: 100% !important;
+   padding: .2rem;
+  }
+  .navbar {
+    padding: 25px 14px;
+  }
+}
+@media (max-width: 660px) {
+   .hero .slides img  {
+   width: 780px !important;
+   height: 530px !important;
+   padding: .2rem;
+  }
+  .navbar {
+    padding: 25px 14px;
+  }
+}
+.nav-logo-p {
+  display: none;
+}
+/* =====================
+   MOBILE
+===================== */
+
+@media (max-width: 700px) {
+  .nav-logo-img {
+    display: none;
+  }
+  .navbar {
+    padding: 25px 10px;
+  }
+}
+
+@media (max-width: 468px) {
+  .hero .slides img  {
+   width: 100% !important;
+   height: 85% !important;
+   padding: .2rem;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .navbar {
+    justify-content: space-between;
+  }
+  .nav-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  gap: 16px;
+
+  /* Animación */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  background-color: #333;
+}
+.nav-links a {
+  text-decoration: none;
+  color: rgba(51, 51, 51, .8);
+  font-size: 16px;
+  font-weight: 500;
+  color: #ccc;
+  padding: 10px 12px;
+  border-radius: 6px;
+
+  transition: 
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.nav-links.active {
+  transform: translateX(0);
+}
+
+  .hero {
+    height: 65vh;
+    margin: 4vh 0;
+  }
+  .nav-logo-img {
+    display: none;
+  }
+  .nav-logo-p  {
+    display: block;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .search-icon {
+    top: 6%;
+  }
+ 
+}
+@media (max-width: 378px) {
+  .hero .slides img {
+    width: 377px !important;
+  }
+}
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+
+  max-width: 1100px;   /* limita el ancho */
+  margin: 0 auto;      /* centra el contenedor */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .cards-container {
+    max-width: 700px;  /* se achica el contenedor */
+    gap: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 16px;
+  }
+}
+
+/* Cards */
+.card {
+  width: 100%; /* CLAVE para que se achique */
+  background: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 12px;
+  padding: .5rem;
+}
+
+.card p {
+  margin: 0 12px 16px;
+  padding: .5rem;
+}
+.section-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  margin: 3rem 0;
+  font-weight: 100;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.section-divider span {
+  padding: 0 1rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+.whatsapp-float {
+  position: fixed;
+  z-index: 1000;
+  top: 578px;
+  right: 34px;
+  width: 66px;
+  height: 66px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  color: white;
+  text-decoration: none;
+  z-index: 9999;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+.whatsapp-float img {
+  width: 28px;
+  height: 28px;
+}
+.about {
+  padding: 100px 20px;
+  background-color: #fff;
+}
+@media (max-width: 460px) {
+ .section-divider {
+   font-size: 1.1rem;
+ }
+.about {
+   padding: 25px 20px;
+ }
+ .card h3 {
+   font-size: 1rem;
+ }
+ .card p {
+   font-size: .9rem;
+ }
+ .whatsapp-float {
+  width: 56px;
+  height: 56px;
+  font-size: 28px;
+  right: 10px;
+ }
+}
+
+
+/* Contenedor centrado */
+.social-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Lista horizontal */
+.social-list {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Botón circular */
+.social-list a {
+  width: 50px;
+  height: 50px;
+  background-color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Íconos */
+.social-list svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+/* Hover opcional */
+.social-list a:hover {
+  background-color: #222;
+  transform: scale(1.1);
+}
+.social-list .Instagram  svg {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.about-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Título elegante */
+.about-wrapper h2 {
+  font-size: 38px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+/* Línea fina decorativa */
+.about-line {
+  width: 60px;
+  height: 2px;
+  background-color: #c7a26d;
+  margin: 0 auto 35px;
+}
+
+/* Texto */
+.about-wrapper p {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 22px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .about-wrapper h2 {
+    font-size: 30px;
+  }
+
+  .about-wrapper p {
+    font-size: 16px;
+  }
+}
+.footer {
+  background-color: #ffffff;
+  padding: 32px 20px;
+  border-top: 1px solid #eaeaea;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.06);
+  margin-top: 6rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* CONTENEDOR */
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* GRID RESPONSIVE */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    margin-left: 6rem;
+  }
+}
+
+/* COLUMNA */
+.footer-column {
+  text-align: center;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-weight: 400;
+  
+}
+
+/* LISTA (CLAVE DE ALINEACIÓN) */
+.footer-list {
+  width: 260px;
+  margin: 0 auto;
+  padding-top: .5rem;
+}
+
+/* ITEM */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+/* ICONO */
+.footer-icon {
+  width: 18px;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* TEXTO */
+.footer-item span {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* MOBILE AJUSTES FINOS */
+@media (max-width: 600px) {
+  .footer-list {
+    width: 100%;
+    max-width: 255px;
+  }
+
+  .footer-item span {
+    white-space: normal; /* permite cortar en mobile */
+    text-align: left;
+  }
+}
+@media (max-width: 400px) {
+  .footer-column h4 {
+    font-size: 14px;
+  }
+}
+@media (max-width: 380px) {
+  .footer-column h4 {
+    font-size: 13px;
+  }
+}
+
+  </style>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <div class="nav-logo">
+      <img class="nav-logo-img" src="./img/Logocentrodeestetica.png" style="width: 120px;" alt="">
+      <p class="nav-logo-p">Inicio</p></div>
+
+  </div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#inicio">Inicio</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <div class="search-container">
+    <input type="text" placeholder="Buscar"/>
+    <span class="search-icon">
+      <svg viewBox="0 0 24 24" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="7"
+                stroke="currentColor" stroke-width="2"/>
+        <line x1="16.65" y1="16.65" x2="21" y2="21"
+              stroke="currentColor" stroke-width="2"
+              stroke-linecap="round"/>
+      </svg>
+    </span>
+  </div>
+</nav>
+<section class="hero" id="inicio">
+    <div class="slides">
+      <div class="slide active"><img src="./img/Heeero1.png" alt="" style="display: block; height: 820px; width: 1500px; margin: auto;"></div>
+      <div class="slide active"><img src="./img/Heeero2.png" alt="" style="display: block; height: 820px; width: 1500px; margin: auto;"></div>
+      <div class="slide active"><img src="./img/Heeero3.png" alt="" style="display: block; height: 820px; width: 1500px; margin: auto;"></div>
+    </div>
+
+</section>
+
+<div class="section-divider">
+  <p>Nuestros productos</p>
+
+</div>
+
+<section class="cards-container" id="catalogo">
+  <div class="card">
+    <img src="img/limpiezafacial.jpg" alt="Limpieza Facial Profunda">
+    <h3>Limpieza Facial Profunda</h3>
+    <p>Eliminación de impurezas y renovación completa de la piel</p>
+  </div>
+
+  <div class="card">
+    <img src="img/hidratacionfacialintensiva .avif" alt="Hidratación Facial Intensiva">
+    <h3>Hidratación Facial Intensiva</h3>
+    <p>Aporta nutrición profunda y luminosidad al rostro.</p>
+  </div>
+
+  <div class="card">
+    <img src="img/peelingquimico.jpg" alt="Peeling Químico">
+    <h3>Peeling Químico</h3>
+    <p>Estimula colágeno y mejora la firmeza de la piel</p>
+  </div>
+
+  <div class="card">
+    <img src="img/radiofrecuenciafacial.webp" alt="Radiofrecuencia Facial">
+    <h3>Radiofrecuencia Facial</h3>
+    <p>Cuadrados de brownie húmedo con trozos de nuez visibles.</p>
+  </div>
+
+  <div class="card">
+    <img src="img/dermapenreeejuvenecedor.jpg" alt="Dermapen Rejuvenecedor">
+    <h3>Dermapen Rejuvenecedor</h3>
+    <p>Microagujas para mejorar textura, manchas y líneas finas</p>
+  </div>
+
+  <div class="card">
+    <img src="img/tratamientosantienvejecimiento.webp" alt="Tratamiento Antiage">
+    <h3>Tratamiento Antiage</h3>
+    <p>Combate signos de envejecimiento y revitaliza la piel</p>
+  </div>
+
+  <div class="card">
+    <img src="img/masajefacialrelajante.avif" alt="Masaje Facial Relajante">
+    <h3>Masaje Facial Relajante</h3>
+    <p>Relaja músculos faciales y mejora la circulación</p>
+  </div>
+
+  <div class="card">
+    <img src="img/spafacialcompleto.avif" alt="Spa Facial Completo">
+    <h3>Spa Facial Completo</h3>
+    <p>Ritual facial con limpieza, mascarillas y relajación.</p>
+  </div>
+
+  <div class="card">
+    <img src="img/depilacionlaserdefinitiva.jpg" alt="Depilación Láser Definitiva">
+    <h3>Depilación Láser Definitiva</h3>
+    <p>Reducción progresiva del vello no deseado</p>
+  </div>
+
+  <div class="card">
+    <img src="img/depilaciontradicional.jpg" alt="Depilación Tradicional">
+    <h3>Depilación Tradicional</h3>
+    <p>Cera tibia o caliente para una piel suave</p>
+  </div>
+</section>
+
+<a
+  href="https://wa.me/5491126518022"
+  class="whatsapp-float"
+  target="_blank"
+  aria-label="WhatsApp"
+>
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<div class="section-divider" id="nosotros">
+  <p>Sobre nosotros</p>
+</div>
+
+<section class="about">
+  <div class="about-wrapper">
+    <h2>Centro de Estética</h2>
+
+    <div class="about-line"></div>
+
+    <p>
+  Nos dedicamos al cuidado integral de la estética y el bienestar, ofreciendo tratamientos profesionales con productos de alta calidad y técnicas modernas que garantizan resultados visibles y duraderos.
+</p>
+
+<p>
+  Cada servicio se realiza con dedicación y atención al detalle, adaptando cada tratamiento a las necesidades de cada cliente, para realzar su belleza natural y brindar una experiencia de cuidado personalizada.
+</p>
+
+
+  </div>
+</section>
+
+
+
+<div class="section-divider">
+  <p>Seguinos</p>
+</div>
+
+<div class="social-container">
+  <ul class="social-list">
+
+    <li>
+      
+<a href=""  target="_blank" aria-label="Instagram" class="Instagram">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 448 512"
+>
+  <path d="M224 202.66A53.34 53.34 0 1 0 277.34 256 53.38 53.38 0 0 0 224 202.66zm124.71-41a54 54 0 0 0-30.59-30.59C293.36 120 224 120 224 120s-69.36 0-94.12 11.07a54 54 0 0 0-30.59 30.59C88 186.41 88 256 88 256s0 69.36 11.07 94.12a54 54 0 0 0 30.59 30.59C154.64 392 224 392 224 392s69.36 0 94.12-11.07a54 54 0 0 0 30.59-30.59C360 325.36 360 256 360 256s0-69.59-11.29-94.34zM224 338a82 82 0 1 1 82-82 81.9 81.9 0 0 1-82 82zm85.38-148.3a19.14 19.14 0 1 1 19.14-19.14 19.1 19.1 0 0 1-19.14 19.14z"/>
+</svg>
+      </a>
+    </li>
+
+    <li>
+      <a href="" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 320 512" aria-hidden="true">
+          <path d="M279.14 288l14.22-92.66h-88.91V117.78c0-25.35 12.42-50.06 52.24-50.06H293V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+        </svg>
+      </a>
+    </li>
+
+  </ul>
+</div>
+
+
+<footer class="footer" id="contacto">
+  <div class="footer-content">
+    <div class="footer-grid">
+
+      <!-- Columna 1 -->
+      <div class="footer-column">
+        <h4 style="margin-right: 8.2rem;">Medios de pago</h4>
+        <div class="footer-list">
+          <div class="footer-item">
+            <i class="fa-solid fa-credit-card footer-icon"></i>
+            <span>Efectivo y transferencia</span>
+          </div>
+          <div class="footer-item">
+            <i class="fa-solid fa-money-bill footer-icon"></i>
+            <span>Pagos al retirar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 2 -->
+      <div class="footer-column">
+        <h4 style="margin-right: 9.3rem;">Contactanos</h4>
+        <div class="footer-list">
+          <div class="footer-item">
+            <i class="fa-solid fa-clock footer-icon"></i>
+            <span>Lun a Dom · 9 a 20 hs</span>
+          </div>
+          <div class="footer-item">
+            <i class="fa-solid fa-envelope footer-icon"></i>
+            <span>contacto@centrodeestetica.com.ar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 3 -->
+      <div class="footer-column">
+        <h4 style="margin-right: 10.9rem;">Ubicación</h4>
+        <div class="footer-list">
+          <div class="footer-item">
+            <i class="fa-solid fa-location-dot footer-icon"></i>
+            <span>Buenos Aires</span>
+          </div>
+          <div class="footer-item">
+            <i class="fa-solid fa-store footer-icon"></i>
+            <span>Retiro en el día</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+  });
+
+  document.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+  });
+</script>
+
+</body>
+</html>
